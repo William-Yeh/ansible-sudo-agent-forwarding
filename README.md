@@ -1,26 +1,60 @@
-# Simple sudoers role
 
-This role installs sudo package, ensure that /etc/sudoers.d included and
-create or remove sudoers files in /etc/sudoers.d.
-For now, each sudoer has access to all commands within a variable set of users, and global setting determines whether
-NOPASSWD is set or not.
+williamyeh.sudo-agent-forwarding for Ansible Galaxy
+============
 
-## Variables
 
- * sudoers_filename - file name in /etc/sudoers.d (required)
- * sudoers - A dictonary of users who have sudo access and to what users they have 
-   permission to execute commands as. Use '%foo' to specify that users in a given
-   group have sudo access.
-   * defaults: []
-   * example: Check ```ansible-sudoers.yml``` playbook for an example where user 
-   ```testone``` as permission to execute commands as users ```vagrant``` and
-   ```root```and user ```testtwo``` has permission to execute commands as any user.
- * sudoers_nopasswd - if set, NOPASSWD is added to all sudoers entries. Use this
-   when users don't have passwords set.
-   * default: true
- * sudoers_remove - if enabled, remove /etc/sudoers.d/{{ sudoers\_filename }} instead
-   of create.
-   * default: false
+## Summary
 
-## TODO
- * Ability to create users with not full access
+Role name in Ansible Galaxy: **[williamyeh.sudo-agent-forwarding](https://galaxy.ansible.com/list#/roles/XXX)**
+
+This Ansible role has the following feature:
+
+ - Install specific sudo setting to allow SSH agent forwarding.
+
+
+If you prefer a more complete sudoers solution, try alternatives such as [franklinkim.sudo](https://galaxy.ansible.com/list#/roles/1380), [mivok0.sudo](https://galaxy.ansible.com/list#/roles/61), [Stouts.sudo](https://galaxy.ansible.com/list#/roles/842), or [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325).
+
+
+
+
+## Role Variables
+
+None.
+
+
+## Usage
+
+
+### Step 1: add role
+
+Add role name `williamyeh.sudo-agent-forwarding` to your playbook file.
+
+You're done!
+
+
+Simple example:
+
+```yaml
+---
+# file: simple-playbook.yml
+
+- hosts: all
+
+  roles:
+    - williamyeh.sudo-agent-forwarding
+```
+
+
+## Dependencies
+
+None.
+
+
+## License
+
+Licensed under the MIT License. See the [LICENSE file](LICENSE) for details.
+
+
+## History
+
+Forked and rewritten from [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325).

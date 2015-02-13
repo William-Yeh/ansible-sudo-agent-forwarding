@@ -1,17 +1,27 @@
 ---
 - name: Install sudo (Debian-like)
-  apt: pkg=sudo state=installed update_cache=yes cache_valid_time={{ sudoers_apt_cache_valid_time }}
+  sudo: True
+  apt: pkg=sudo state=installed update_cache=yes
   when: ansible_os_family == "Debian"
 
+- name: install libselinux-python binary for Ansible to work (RedHat-like)
+  sudo: True
+  yum: name=libselinux-python state=present
+  when: ansible_os_family == "RedHat"
+
 - name: Install sudo (RedHat-like)
+  sudo: True
   yum: name=sudo state=present
   when: ansible_os_family == "RedHat"
 
 - name: Install sudo (SUSE-like)
+  sudo: True
   zypper: name=sudo state=present
   when: ansible_os_family == "SUSE"
 
+
 - name: Create sudoers.d directory
+  sudo: True
   file:
     path: /etc/sudoers.d
     owner: root
@@ -20,24 +30,19 @@
     state: directory
 
 - name: Set includedir in sudoers
+  sudo: True
   lineinfile:
     dest: /etc/sudoers
     line: "#includedir /etc/sudoers.d"
     state: present
     validate: "/usr/sbin/visudo -cf %s"
 
-- name: Create sudoers
-  template:
-    src: sudoers.d.j2
-    dest: "/etc/sudoers.d/{{ sudoers_filename }}"
+- name: Create sudo file
+  sudo: True
+  copy:
+    src:  ../files/allow-ssh-agent-forwarding
+    dest: /etc/sudoers.d/allow-ssh-agent-forwarding
     mode: 0440
     owner: root
     group: root
     validate: "/usr/sbin/visudo -cf %s"
-  when: not sudoers_remove
-
-- name: Remove sudoers
-  file:
-    path: "/etc/sudoers.d/{{ sudoers_filename }}"
-    state: absent
-  when: sudoers_remove
