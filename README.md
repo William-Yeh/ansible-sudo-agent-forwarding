@@ -5,7 +5,7 @@ williamyeh.sudo-agent-forwarding for Ansible Galaxy
 
 ## Summary
 
-Role name in Ansible Galaxy: **[williamyeh.sudo-agent-forwarding](https://galaxy.ansible.com/list#/roles/XXX)**
+Role name in Ansible Galaxy: **[williamyeh.sudo-agent-forwarding](https://galaxy.ansible.com/list#/roles/2870)**
 
 This Ansible role has the following feature:
 
