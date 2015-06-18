@@ -12,7 +12,7 @@ This Ansible role has the following feature:
  - Install specific sudo setting to allow SSH agent forwarding.
 
 
-If you prefer a more complete sudoers solution, try alternatives such as [franklinkim.sudo](https://galaxy.ansible.com/list#/roles/1380), [mivok0.sudo](https://galaxy.ansible.com/list#/roles/61), [Stouts.sudo](https://galaxy.ansible.com/list#/roles/842), or [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325).
+If you prefer a more complete sudoers solution, try alternatives such as [franklinkim.sudo](https://galaxy.ansible.com/list#/roles/1380), [mivok0.sudo](https://galaxy.ansible.com/list#/roles/61), [Stouts.sudo](https://galaxy.ansible.com/list#/roles/842), or [mchlumsky.sudoersd](https://galaxy.ansible.com/list#/roles/4179) (a fork of [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325)).
 
 
 
