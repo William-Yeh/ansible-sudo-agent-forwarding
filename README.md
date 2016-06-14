@@ -5,14 +5,14 @@ williamyeh.sudo-agent-forwarding for Ansible Galaxy
 
 ## Summary
 
-Role name in Ansible Galaxy: **[williamyeh.sudo-agent-forwarding](https://galaxy.ansible.com/list#/roles/2871)**
+Role name in Ansible Galaxy: **[williamyeh.sudo-agent-forwarding](https://galaxy.ansible.com/williamyeh/sudo-agent-forwarding/)**
 
-This Ansible role has the following feature:
+This Ansible role has only one simple feature:
 
  - Install specific sudo setting to allow SSH agent forwarding.
 
 
-If you prefer a more complete sudoers solution, try alternatives such as [franklinkim.sudo](https://galaxy.ansible.com/list#/roles/1380), [mivok0.sudo](https://galaxy.ansible.com/list#/roles/61), [Stouts.sudo](https://galaxy.ansible.com/list#/roles/842), or [mchlumsky.sudoersd](https://galaxy.ansible.com/list#/roles/4179) (a fork of [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325)).
+If you prefer a more complete sudoers solution, try alternatives such as [franklinkim.sudo](https://galaxy.ansible.com/franklinkim/sudo/), [mivok0.sudo](https://galaxy.ansible.com/mivok0/sudo/), [Stouts.sudo](https://galaxy.ansible.com/Stouts/sudo/), or [mchlumsky.sudoersd](https://galaxy.ansible.com/mchlumsky/sudoersd/) (a fork of [knopki.sudoers](https://galaxy.ansible.com/knopki/sudoers/)).
 
 
 
@@ -39,7 +39,7 @@ Simple example:
 # file: simple-playbook.yml
 
 - hosts: all
-
+  become: true
   roles:
     - williamyeh.sudo-agent-forwarding
 ```
@@ -57,4 +57,4 @@ Licensed under the MIT License. See the [LICENSE file](LICENSE) for details.
 
 ## History
 
-Forked and rewritten from [knopki.sudoers](https://galaxy.ansible.com/list#/roles/325).
+Forked and rewritten from [knopki.sudoers](https://galaxy.ansible.com/knopki/sudoers/).

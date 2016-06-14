@@ -1,27 +1,21 @@
 ---
 - name: Install sudo (Debian-like)
-  sudo: True
-  apt: pkg=sudo state=installed update_cache=yes
+  apt: name=sudo state=present update_cache=yes
   when: ansible_os_family == "Debian"
 
-- name: install libselinux-python binary for Ansible to work (RedHat-like)
-  sudo: True
-  yum: name=libselinux-python state=present
-  when: ansible_os_family == "RedHat"
-
-- name: Install sudo (RedHat-like)
-  sudo: True
-  yum: name=sudo state=present
+- name: install libselinux-python and sudo (RedHat-like)
+  yum: name={{ item }}  state=present
+  with_items:
+    - libselinux-python
+    - sudo
   when: ansible_os_family == "RedHat"
 
 - name: Install sudo (SUSE-like)
-  sudo: True
   zypper: name=sudo state=present
   when: ansible_os_family == "SUSE"
 
 
 - name: Create sudoers.d directory
-  sudo: True
   file:
     path: /etc/sudoers.d
     owner: root
@@ -30,7 +24,6 @@
     state: directory
 
 - name: Set includedir in sudoers
-  sudo: True
   lineinfile:
     dest: /etc/sudoers
     line: "#includedir /etc/sudoers.d"
@@ -38,7 +31,6 @@
     validate: "/usr/sbin/visudo -cf %s"
 
 - name: Create sudo file
-  sudo: True
   copy:
     src:  ../files/allow-ssh-agent-forwarding
     dest: /etc/sudoers.d/allow-ssh-agent-forwarding
